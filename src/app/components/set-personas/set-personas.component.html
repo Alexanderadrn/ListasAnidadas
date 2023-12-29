@@ -1,0 +1,53 @@
+<div class="content d-flex justify-content-center" style="box-sizing: border-box;">
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h1>Usuario</h1>
+            <form>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col">
+                        <label for="form-control">Nombres::</label>
+                        <input type="text" class="form-control" name="usuario" required="" (keypress)="onKeyPressTexto($event)"
+                            [(ngModel)]="personas.nombrePersona">
+                    </div>
+                    <div class="col">
+                        <label for="form-control">Cedula:</label>
+                        <input type="email" class="form-control" name="email" (keypress)="onKeyPressNumero($event)"
+                            [(ngModel)]="personas.cedulaPersonas">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col">
+                        <label for="form-control">Provincia:</label>
+                        <mat-select name="idProvincia" id="idProvincia" [(ngModel)]="personas.idProvincia"
+                        (selectionChange)="getCiudades()">
+                            <mat-option *ngFor="let item of provincias" [value]="item.idProvincias">
+                                {{item.nombreProvincia}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col">
+                        <label for="form-control">Ciudad:</label>
+                        <mat-select name="idCiudad" id="idCiudad" [(ngModel)]="personas.idCiudad"
+                        (selectionChange)="getParroquias()">
+                            <mat-option *ngFor="let item of ciudad" [value]="item.idCiudad">
+                                {{item.nombreCiudad}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col">
+                        <label for="form-control">Ciudad:</label>
+                        <mat-select name="idParroquia" id="idParroquia" [(ngModel)]="personas.idParroquia">
+                            <mat-option *ngFor="let item of parroquia" [value]="item.idParroquia">
+                                {{item.nombreParroquia}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </form>
+            <div>
+                <button class="btn btn-secondary" style="margin: 5px;" (click)="setPersonas()">{{titulo}}</button>
+                <button class="btn btn-primary" style="margin: 5px;" (click)="dismissModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
